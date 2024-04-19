@@ -56,7 +56,7 @@ export class CreateComponent{
   }
 
   getDefinition(tableName: string) {
-    this.http.get<string[]>(`https://localhost:7000/api/Defination/GetNames/${tableName}`).subscribe({
+    this.http.get<string[]>(`https://localhost:7253/api/Defination/GetNames/${tableName}`).subscribe({
         next: (data) => {
             switch (tableName) {
                 case 'Modes':
@@ -95,7 +95,7 @@ create() {
     this.validateForm();
 
     if (this.isFormValid()) {
-        this.http.post("https://localhost:7000/api/Shipment/CreateShipment", this.addModel).subscribe({
+        this.http.post("https://localhost:7253/api/Shipment/CreateShipment", this.addModel).subscribe({
             next: () => {
                 this.router.navigate(['/']).then(() => {
                     window.location.reload();

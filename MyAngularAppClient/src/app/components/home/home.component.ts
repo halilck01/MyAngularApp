@@ -125,7 +125,7 @@ export default class HomeComponent {
         
     }
     getShipments() {
-        this.http.get<any[]>("https://localhost:7000/api/Shipment/GetShipments").subscribe({
+        this.http.get<any[]>("https://localhost:7253/api/Shipment/GetShipments").subscribe({
             next: (data) => {
                 this.shipmentRequestModels = data;
             },
@@ -141,7 +141,7 @@ export default class HomeComponent {
         this.getDefinition('Unit1s');
         this.getDefinition('Unit2s');
         this.getDefinition('Currencies');
-        this.http.get<any>(`https://localhost:7000/api/Shipment/GetShipmentsById/${id}`).subscribe({
+        this.http.get<any>(`https://localhost:7253/api/Shipment/GetShipmentsById/${id}`).subscribe({
             next: (data) => {
                 this.selectedShipment = data;
                 this.selectedMode = this.modes.find(m => m.id === this.selectedShipment.modeId);
@@ -160,7 +160,7 @@ export default class HomeComponent {
         });
     }
     getDefinition(tableName: string) {
-    this.http.get<string[]>(`https://localhost:7000/api/Defination/GetNames/${tableName}`).subscribe({
+    this.http.get<string[]>(`https://localhost:7253/api/Defination/GetNames/${tableName}`).subscribe({
         next: (data) => {
             switch (tableName) {
                 case 'Modes':
@@ -207,7 +207,7 @@ export default class HomeComponent {
         currencyId: this.selectedCurrencies.id
     };
 
-    this.http.post('https://localhost:7000/api/Shipment/UpdateShipment', updatedShipment)
+    this.http.post('https://localhost:7253/api/Shipment/UpdateShipment', updatedShipment)
         .subscribe({
             next: (response) => {
                 console.log('Shipment updated:', response);
@@ -225,7 +225,7 @@ export default class HomeComponent {
           header: 'Confirm',
           icon: 'pi pi-exclamation-triangle',
           accept: () => {
-              this.http.delete(`https://localhost:7000/api/Shipment/DeleteShipment?id=${shipment.id}`).subscribe({
+              this.http.delete(`https://localhost:7253/api/Shipment/DeleteShipment?id=${shipment.id}`).subscribe({
                   next: () => {
                       this.shipmentRequestModels = this.shipmentRequestModels.filter(val => val.id !== shipment.id);
                       this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Shipment Deleted', life: 2000});

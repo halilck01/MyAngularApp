@@ -90,7 +90,7 @@ export class DetailComponent {
             const options = {
               body: body
             };
-            this.http.delete('https://localhost:7000/api/Defination/DeleteName', options).subscribe({
+            this.http.delete('https://localhost:7253/api/Defination/DeleteName', options).subscribe({
               next: () => {
                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Item Deleted', life: 2000 });
                 this.selectedTableGetNames();
@@ -113,7 +113,7 @@ export class DetailComponent {
       return;
     }
   
-    this.http.get<any[]>(`https://localhost:7000/api/Defination/GetNames/${this.selectedTable}`).subscribe({
+    this.http.get<any[]>(`https://localhost:7253/api/Defination/GetNames/${this.selectedTable}`).subscribe({
       next: (existingNames) => {
         const isNameExist = existingNames.some(def => def.name.toLowerCase() === this.newName?.toLowerCase());
         
@@ -127,7 +127,7 @@ export class DetailComponent {
             tableName: this.selectedTable
           };
   
-          this.http.put(`https://localhost:7000/api/Defination/UpdateName`, updateData).subscribe({
+          this.http.put(`https://localhost:7253/api/Defination/UpdateName`, updateData).subscribe({
             next: () => {
               this.messageService.add({severity: 'success', summary: 'Success', detail: 'Defination updated successfully'});
               this.hideDialog();
@@ -185,7 +185,7 @@ export class DetailComponent {
     }
     selectedTableGetNames() {
     if (this.selectedTable) {
-        this.http.get<any[]>(`https://localhost:7000/api/Defination/GetNames/${this.selectedTable}`).subscribe({
+        this.http.get<any[]>(`https://localhost:7253/api/Defination/GetNames/${this.selectedTable}`).subscribe({
             next: (data) => {
               this.definationNameRequestModel = data.map(item => ({ names: item.name}));
             },

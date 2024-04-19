@@ -10,6 +10,6 @@ export class TableService {
   constructor(private http: HttpClient) {}
 
   getNames(tableName: string): Observable<string[]> {
-    return this.http.get<string[]>(`https://localhost:7000/api/Defination/GetNames/GetNames/${tableName}`);
+    return this.http.get<string[]>(`https://localhost:7253/api/Defination/GetNames/GetNames/${tableName}`);
   }
 }

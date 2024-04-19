@@ -13,10 +13,10 @@ export class ShipmentRequestModelService {
   updateShipmentRequestModel(ShipmentRequestModel: ShipmentRequestModelService) {
     throw new Error('Method not implemented.');
   }
-  private apiUrlGetShipments = 'https://localhost:7000/api/Shipment/GetShipments';
-  private apiUrlUpdateShipments = 'https://localhost:7000/api/Shipment/GetShipments';
-  private apiUrlDeleteShipments = 'https://localhost:7000/api/Shipment/GetShipments';
-  private apiUrlGetDefination = 'https://localhost:7000/api/Defination/GetNames';
+  private apiUrlGetShipments = 'https://localhost:7253/api/Shipment/GetShipments';
+  private apiUrlUpdateShipments = 'https://localhost:7253/api/Shipment/GetShipments';
+  private apiUrlDeleteShipments = 'https://localhost:7253/api/Shipment/GetShipments';
+  private apiUrlGetDefination = 'https://localhost:7253/api/Defination/GetNames';
 
   constructor(private http: HttpClient) { }
 

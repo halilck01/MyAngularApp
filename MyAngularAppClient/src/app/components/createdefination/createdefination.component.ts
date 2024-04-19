@@ -31,7 +31,7 @@ create() {
 }
 checkExistingNames() {
   if (this.selectedTable) {
-    this.http.get<any[]>(`https://localhost:7000/api/Defination/GetNames/${this.selectedTable}`).subscribe({
+    this.http.get<any[]>(`https://localhost:7253/api/Defination/GetNames/${this.selectedTable}`).subscribe({
         next: (data) => {
           if (data.some(item => item.name === this.newName)) {
             this.messageService.add({severity: 'error', summary: 'Error', detail: 'This name already exists in the table.'});
@@ -53,7 +53,7 @@ saveNewName() {
       name: this.newName
   };
 
-  this.http.post('https://localhost:7000/api/Defination/AddName', formData).subscribe({
+  this.http.post('https://localhost:7253/api/Defination/AddName', formData).subscribe({
       next: (response) => {
           this.selectedTable = null;
           this.newName = '';
