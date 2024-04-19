@@ -1,0 +1,78 @@
+<div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+    <div class="flex align-items-center">
+        <label for="modes" class="me-4">Mode:</label>
+        <select name="modeId" [(ngModel)]="addModel.modeId" class="form-control w-75" required>
+            <option *ngFor="let mode of modes" [ngValue]="mode.id">{{ mode.name }}</option>
+        </select>    
+        <div *ngIf="modeInvalid" class="alert alert-danger">Mode is required</div>   
+    </div>
+</div>
+<div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+    <div class="flex align-items-center">
+        <label for="movementType" class="me-4">Movement Type:</label>
+        <select name="movementTypeId" [(ngModel)]="addModel.movementTypeId" class="form-control w-75" required>
+            <option *ngFor="let movementType of movementTypes" [ngValue]="movementType.id">{{ movementType.name }}</option>
+        </select>
+        <div *ngIf="movementTypeInvalid" class="alert alert-danger">Movement Type is required</div>   
+    </div>
+</div>
+<div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+    <div class="flex align-items-center">
+        <label for="incoterms" class="me-4">Incoterms:</label>
+        <select name="incotermId" [(ngModel)]="addModel.incotermId" class="form-control w-75" required>
+            <option *ngFor="let incoterm of incoterms" [ngValue]="incoterm.id">{{ incoterm.name }}</option>
+        </select>
+        <div *ngIf="incotermInvalid" class="alert alert-danger">Incoterm is required</div> 
+    </div>
+</div>
+<div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+    <div class="flex align-items-center">
+        <label for="countriescities" class="me-4">Countries-Cities:</label>
+        <select name="countriescitiesId" [(ngModel)]="addModel.countryCitiesId" class="form-control w-75" required>
+            <option *ngFor="let countrycity of countriescities" [ngValue]="countrycity.id">{{ countrycity.name }}</option>
+        </select>
+        <div *ngIf="countriesCitiesInvalid" class="alert alert-danger">Countries-Cities is required</div>
+    </div>
+</div>
+<div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+    <div class="flex align-items-center">
+        <label for="packageType" class="me-4">Package Type:</label>
+        <select name="packageTypeId" [(ngModel)]="addModel.packageTypeId" class="form-control w-75" required>
+            <option *ngFor="let packageType of packageTypes" [ngValue]="packageType.id">{{ packageType.name }}</option>
+        </select>
+        <div *ngIf="packageTypeInvalid" class="alert alert-danger">Package Type is required</div>
+    </div>
+</div>
+<div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+    <div class="flex align-items-center">
+        <label for="unit1" class="me-4">Unit1:</label>
+        <select name="unit1Id" [(ngModel)]="addModel.unit1Id" class="form-control w-75" required>
+            <option *ngFor="let unit1 of unit1s" [ngValue]="unit1.id">{{ unit1.name }}</option>
+        </select>
+        <div *ngIf="unit1Invalid" class="alert alert-danger">Unit 1 is required</div>
+    </div>
+</div>
+<div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+    <div class="flex align-items-center">
+        <label for="unit2" class="me-4">Unit2:</label>
+        <select name="unit2Id" [(ngModel)]="addModel.unit2Id" class="form-control w-75" required>
+            <option *ngFor="let unit2 of unit2s" [ngValue]="unit2.id">{{ unit2.name }}</option>
+        </select>
+        <div *ngIf="unit2Invalid" class="alert alert-danger">Unit 2 is required</div>
+    </div>
+</div>
+<div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+    <div class="flex align-items-center">
+        <label for="currency" class="me-4">Currency:</label>
+        <select name="currencyId" [(ngModel)]="addModel.currencyId" class="form-control w-75" required>
+            <option *ngFor="let currency of currencies" [ngValue]="currency.id">{{ currency.name }}</option>
+        </select>
+        <div *ngIf="currencyInvalid" class="alert alert-danger">Currency is required</div>
+    </div>
+</div>
+<div class="card flex justify-content-" style="padding: 0;">
+    <button type="button" class="p-button p-component p-button-success" (click)="create()">
+        <span class="p-button-label p-c">Save</span>
+    </button>    
+</div>
+<p-toast></p-toast>

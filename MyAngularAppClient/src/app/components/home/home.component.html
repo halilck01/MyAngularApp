@@ -1,0 +1,137 @@
+<div class="card mt-2">
+    <p-toast></p-toast>
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="New Shipment" icon="pi pi-plus" class="p-button-success mr-2" (click)="show()"></button>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table
+        #dt
+        [value]="shipmentRequestModels"
+        [rows]="10"
+        [paginator]="true"
+        [tableStyle]="{ 'min-width': '75rem' }"
+        [(selection)]="selectedShipments"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true"
+    >
+        <ng-template pTemplate="header" let-shipment>
+            <tr>
+                <th pSortableColumn="mode" style="min-width:5rem">Mode <p-sortIcon field="mode"></p-sortIcon></th>
+                <th pSortableColumn="movementType">Movement Type <p-sortIcon field="movementType"></p-sortIcon></th>
+                <th pSortableColumn="incoterms" style="min-width:10rem">Incoterms <p-sortIcon field="incoterms"></p-sortIcon></th>
+                <th pSortableColumn="country">Country <p-sortIcon field="country"></p-sortIcon></th>
+                <th pSortableColumn="packageType" style="min-width:10rem">Package Type <p-sortIcon field="packageType"></p-sortIcon></th>
+                <th pSortableColumn="unit1" style="min-width:10rem">Unit - 1 <p-sortIcon field="unit1"></p-sortIcon></th>
+                <th pSortableColumn="unit2" style="min-width:10rem">Unit - 2 <p-sortIcon field="unit2"></p-sortIcon></th>
+                <th pSortableColumn="currency" style="min-width:10rem">Currency <p-sortIcon field="currency"></p-sortIcon></th>
+                <th pSortableColumn="id" style="min-width:10rem" hidden>Id <p-sortIcon field="id"></p-sortIcon></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-shipment>
+            <tr>
+                <td>{{ shipment.mode?.name }}</td>
+                <td>{{ shipment.movementType?.name }}</td>
+                <td>{{ shipment.incoterm?.name }}</td>
+                <td>{{ shipment.countryCities?.name }}</td>
+                <td>{{ shipment.packageType?.name }}</td>
+                <td>{{ shipment.unit1?.name }}</td>
+                <td>{{ shipment.unit2?.name }}</td>
+                <td>{{ shipment.currency?.name }}</td>
+                <td hidden>{{ shipment.id }}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="getShipmentById(shipment.id)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteShipments(shipment)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">In total there are {{ shipmentRequestModels ? shipmentRequestModels.length : 0 }} shipment.</div>
+        </ng-template>
+    </p-table>
+</div>
+<p-dialog [(visible)]="shipmentDialog" [style]="{ width: '450px' }" header="Shipment Detail" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+            <div class="flex align-items-center">
+                <label for="modes" class="me-4">Mode:</label>
+                <select name="modeId" [(ngModel)]="selectedMode.id" class="form-control w-75" name="mode">
+                    <option *ngFor="let mode of modes" [ngValue]="mode.id">{{ mode.name }}</option>
+                </select>       
+            </div>
+        </div>
+        <div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+            <div class="flex align-items-center">
+                <label for="movementType" class="me-4">Movement Type:</label>
+                <select name="movementTypeId" [(ngModel)]="selectedMovementType.id" class="form-control w-75">
+                    <option *ngFor="let movementType of movementTypes" [ngValue]="movementType.id">{{ movementType.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+            <div class="flex align-items-center">
+                <label for="incoterms" class="me-4">Incoterms:</label>
+                <select name="incotermId" [(ngModel)]="selectedIncoterms.id" class="form-control w-75">
+                    <option *ngFor="let incoterm of incoterms" [ngValue]="incoterm.id">{{ incoterm.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+            <div class="flex align-items-center">
+                <label for="countriescities" class="me-4">Countries-Cities:</label>
+                <select name="countriescitiesId" [(ngModel)]="selectedCountriescities.id" class="form-control w-75">
+                    <option *ngFor="let countrycity of countriescities" [ngValue]="countrycity.id">{{ countrycity.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+            <div class="flex align-items-center">
+                <label for="packageType" class="me-4">Package Type:</label>
+                <select name="packageTypeId" [(ngModel)]="selectedPackageTypes.id" class="form-control w-75">
+                    <option *ngFor="let packageType of packageTypes" [ngValue]="packageType.id">{{ packageType.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+            <div class="flex align-items-center">
+                <label for="unit1" class="me-4">Unit1:</label>
+                <select name="unit1Id" [(ngModel)]="selectedUnit1s.id" class="form-control w-75">
+                    <option *ngFor="let unit1 of unit1s" [ngValue]="unit1.id">{{ unit1.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+            <div class="flex align-items-center">
+                <label for="unit2" class="me-4">Unit2:</label>
+                <select name="unit2Id" [(ngModel)]="selectedUnit2s.id" class="form-control w-75">
+                    <option *ngFor="let unit2 of unit2s" [ngValue]="unit2.id">{{ unit2.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+            <div class="flex align-items-center">
+                <label for="currency" class="me-4">Currency:</label>
+                <select name="currencyId" [(ngModel)]="selectedCurrencies.id" class="form-control w-75">
+                    <option *ngFor="let currency of currencies" [ngValue]="currency.id">{{ currency.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="card flex justify-content-center border-0 border-none" style="padding: 0;">
+            <div class="flex align-items-center" hidden>
+                <label for="id" hidden>Id:</label>
+                <input type="hidden" name="id" [(ngModel)]="selectedShipmentId" class="form-control w-75">
+            </div>
+        </div>        
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="updateShipment()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>

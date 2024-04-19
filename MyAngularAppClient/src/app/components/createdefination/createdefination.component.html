@@ -1,0 +1,20 @@
+<div class="card flex flex-column justify-content-center border-0" style="padding: 20px; max-width: 500px; margin: auto;">
+    <p-toast></p-toast>
+    <div class="flex align-items-center mb-3">
+        <label for="defination" class="me-4">Select:</label>
+        <select id="defination" class="form-control w-75" [(ngModel)]="selectedTable" required>
+            <option [value]="null" disabled>Select a Table</option>
+            <option *ngFor="let def of defination" [value]="def.name">{{ def.name }}</option>
+        </select>  
+    </div>
+    <div class="flex align-items-center mb-3">
+        <label for="name" class="me-4">Name:</label>
+        <input id="name" [(ngModel)]="newName" class="form-control w-75">    
+    </div>
+    <div class="flex justify-content-center" style="padding: 0;">
+        <button type="button" class="p-button p-component p-button-success" (click)="create()">
+            <span class="p-button-label p-c">Save</span>
+        </button>    
+    </div>
+</div>
+

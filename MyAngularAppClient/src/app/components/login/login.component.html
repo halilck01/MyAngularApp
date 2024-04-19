@@ -1,0 +1,37 @@
+<p-toast position="bottom-right" [life]="1500"></p-toast>
+<div class="card flex justify-content-center align-items-center h100">
+    <p-card header="Login Page" subheader="Fill in your information to log in" [style]="{ width: '360px' }">
+        <ng-template pTemplate="header">
+            <img alt="Card" src="/assets/forceget_logo.jpeg" />
+        </ng-template>
+        <div>
+            <p-inputGroup>
+                <input [(ngModel)]="request.userNameOrEmail" pInputText placeholder="Username"/>
+            </p-inputGroup>
+        </div>
+        <div class="mt-2 flex">
+                    <p-password [(ngModel)]="request.password" placeholder="Password" [inputStyle]="{width:'325px'}">
+                         <ng-template pTemplate="header">
+                             <h6>Pick a password</h6>
+                         </ng-template>
+                         <ng-template pTemplate="footer">
+                             <p-divider></p-divider>
+                             <p class="mt-2">Suggestions</p>
+                             <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                                 <li>At least one lowercase</li>
+                                 <li>At least one uppercase</li>
+                                 <li>At least one numeric</li>
+                                 <li>Minimum 8 characters</li>
+                             </ul>
+                         </ng-template>
+                     </p-password>
+        </div>
+        <div class="mt-2 flex align-items-center gap-1">
+                <p-checkbox [(ngModel)]="request.rememberMe" [binary]="true" inputId="ny"></p-checkbox>
+                <label for="ny">Remember Me</label>
+        </div>
+        <ng-template pTemplate="footer">
+            <p-button (onClick)="signIn()" [style]="{width:'100%'}" label="Login" icon="pi pi-user"></p-button>
+        </ng-template>
+    </p-card>
+</div>
