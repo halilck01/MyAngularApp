@@ -1,27 +1,27 @@
 # MyAngularAppClient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+Bu proje [Angular CLI](https://github.com/angular/angular-cli) sürüm 17.2.3 ile oluşturulmuştur.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Bir geliştirme sunucusu için `ng serve` komutunu çalıştırın.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Yeni bir bileşen oluşturmak için `ng generate component component-name` komutunu çalıştırın. Ayrıca `ng generate directive|pipe|service|class|guard|interface|enum|module` komutlarını da kullanabilirsiniz.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Projeyi yapılandırmak için `ng build` komutunu çalıştırın. Yapılan işlemlerin sonucunda oluşturulan dosyalar `dist/` dizinine kaydedilecektir.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Birim testlerini çalıştırmak için `ng test` komutunu kullanın. Bu testler [Karma](https://karma-runner.github.io) aracılığıyla yürütülecektir.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Uçtan uca testleri çalıştırmak için  `ng e2e` komutunu kullanın. Bu komutu kullanabilmek için, uçtan uca test yeteneklerini uygulayan bir paket eklemeniz gerekir.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Angular CLI hakkında daha fazla yardım almak için `ng help` komutunu kullanın veya [Angular CLI Overview and Command Reference](https://angular.io/cli) sayfasını ziyaret edin.
