@@ -9,6 +9,7 @@ JwtBearer
 
 Başlarken
 Uygulamayı klonladıktan sonra çalıştırmak için MyAngularAppServer katmanında bulunan appsettings.json dosyası içindeki sql connection cümleciğini değiştirmeniz gerekmektedir.
+
 ![MyAngularAppServer4](https://github.com/halilck01/MyAngularApp/assets/122792022/54ac261c-6429-40d4-a506-a2aee9b3c78a)
 ![MyAngularAppServer5](https://github.com/halilck01/MyAngularApp/assets/122792022/b77add6f-3b70-41fe-a66a-c70994442cd5)
 
